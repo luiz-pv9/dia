@@ -1,0 +1,25 @@
+{
+  "globals": {
+    "describe": false,
+    "it": false
+  },
+  "bitwise": true,
+  "curly": true,
+  "eqeqeq": true,
+  "forin": true,
+  "freeze": true,
+  "futurehostile": true,
+  "latedef": true,
+  "maxdepth": 2,
+  "maxparams": 3,
+  "maxstatements": 6,
+  "nocomma": true,
+  "nonew": true,
+  "singleGroups": true,
+  "undef": true,
+  "unused": true,
+  "varstmt": true,
+  "node" : true,
+  "esversion": 6,
+  "asi": true
+}

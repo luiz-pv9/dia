@@ -2,10 +2,15 @@
   "name": "sign",
   "version": "0.0.1",
   "scripts": {
-    "test": "mocha --harmony --recursive test"
+    "test": "mocha --harmony --recursive -t 8000 test"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.1.0"
+  },
+  "dependencies": {
+    "http-shutdown": "^1.1.0",
+    "lodash": "^4.16.4",
+    "request": "^2.75.0"
   }
 }

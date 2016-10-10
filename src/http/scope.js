@@ -33,7 +33,7 @@ class Scope {
   }
 
   prefix(prefix) {
-    if( ! prefix.endsWith('/')) {
+    if(!prefix.endsWith('/')) {
       prefix += '/'
     }
     this.pathPrefix = prefix

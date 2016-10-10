@@ -1,5 +1,5 @@
-const Scope = require('../../src/pipe/scope')
-const Dispatcher = require('../../src/pipe/dispatcher')
+const Scope = require('../../src/http/scope')
+const Dispatcher = require('../../src/http/dispatcher')
 const expect = require('chai').expect
 
 describe('Scope specs', () => {
@@ -75,7 +75,17 @@ describe('Scope specs', () => {
     })
   })
 
-  it('doesnt change the parent prefix')
+  it('doesnt change the parent prefix', () => {
+    scope.prefix('admin')
+    scope.group(scope => {
+      scope.prefix('super')
+    })
+    scope.get('home', val => { return val + 1 })
+
+    return dispatcher.dispatch('get', 'admin/home', 1).then(val => {
+      expect(val).to.eq(2)
+    })
+  })
 
   it('nest with inherited pipeline', () => {
     scope.pipe(val => { return val + 1 })
