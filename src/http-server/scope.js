@@ -9,9 +9,8 @@ class Scope {
 
     httpMethods.forEach(method => {
       this[method] = (path, callback) => {
-        this.dispatcher.match([method], 
-                              this.inheritedPrefix + this.pathPrefix + path, 
-                              this.wrapCallback(callback))
+        path = this.inheritedPrefix + this.pathPrefix + path
+        this.dispatcher.match([method], path, this.wrapCallback(callback))
       }
     })
   }
