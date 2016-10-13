@@ -1,11 +1,5 @@
 const HTML = require('./html')
-
-// TODO: extract to own file
-class HTMLSafeString {
-  constructor(content) {
-    this.content = content
-  }
-}
+const HTMLSafeString = require('./html-safe-string')
 
 /**
  * View instances are the context of the rendered templates.
