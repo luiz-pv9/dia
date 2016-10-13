@@ -1,4 +1,4 @@
-const JSONUtils = require('../../src/json/utils')
+const JSONUtils = require('../../src/json/json-utils')
 const expect = require('chai').expect
 
 describe('JSONUtils specs', () => {

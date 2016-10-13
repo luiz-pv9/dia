@@ -1,4 +1,4 @@
-const JSONUtils = require('../json/utils')
+const JSONUtils = require('../json/json-utils')
 const url = require('url')
 const querystring = require('querystring')
 

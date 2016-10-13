@@ -3,7 +3,7 @@ const Dispatcher   = require('./dispatcher')
 const Conn         = require('./conn')
 const httpShutdown = require('http-shutdown')
 const http         = require('http')
-const JSONUtils    = require('../json/utils')
+const JSONUtils    = require('../json/json-utils')
 
 const defaultConfig = {
   gracefulShutdown: true,

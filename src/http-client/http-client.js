@@ -1,7 +1,7 @@
 const request = require('request')
 const querystring = require('querystring')
 const url = require('url')
-const JSONUtils = require('../json/utils')
+const JSONUtils = require('../json/json-utils')
 const fs = require('fs')
 
 // `Request` in the function's name getRequestResponse refers to the library's 
