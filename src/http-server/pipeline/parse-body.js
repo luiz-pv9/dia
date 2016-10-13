@@ -1,5 +1,5 @@
 const formidable = require('formidable')
-const UploadedFile = require('../uploaded_file')
+const UploadedFile = require('../uploaded-file')
 
 // The parseBody function is just a wrapper around formidable, which is an
 // excelent library for parsing form data, including multipart with files.

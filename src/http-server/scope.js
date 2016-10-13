@@ -1,4 +1,4 @@
-const httpMethods = require('./http_methods')
+const httpMethods = require('./http-methods')
 
 class Scope {
   constructor(dispatcher) {

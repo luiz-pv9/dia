@@ -1,5 +1,5 @@
-const Dispatcher = require('../../src/http/dispatcher')
-const Conn = require('../../src/http/conn')
+const Dispatcher = require('../../src/http-server/dispatcher')
+const Conn = require('../../src/http-server/conn')
 const expect = require('chai').expect
 
 describe('Dispatcher specs', () => {

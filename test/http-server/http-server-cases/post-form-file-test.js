@@ -1,7 +1,7 @@
-const HTTPServer = require('../../../src/http/http_server')
-const HTTPClient = require('../../../src/http_client/http_client')
+const HTTPServer = require('../../../src/http-server/http-server')
+const HTTPClient = require('../../../src/http-client/http-client')
 const expect = require('chai').expect
-const parseBody = require('../../../src/http/pipeline/parse_body')
+const parseBody = require('../../../src/http-server/pipeline/parse-body')
 
 describe('POST form data', () => {
   let server, scope
@@ -27,14 +27,14 @@ describe('POST form data', () => {
   it('parses form files', () => {
     let data = { 
       name: 'Luiz', 
-      script: HTTPClient.file(__dirname + '/post_form_file_test.js')
+      script: HTTPClient.file(__dirname + '/post-form-file-test.js')
     }
 
     return HTTPClient.post('http://localhost:8000/users', data).then(res => {
       expect(res.statusCode).to.eq(200)
       expect(res.body).to.eql({
         script_extension: '.js',
-        script_name: 'post_form_file_test',
+        script_name: 'post-form-file-test',
       })
     })
   })

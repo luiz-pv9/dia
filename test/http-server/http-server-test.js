@@ -1,4 +1,4 @@
-const HTTPServer = require('../../src/http/http_server')
+const HTTPServer = require('../../src/http-server/http-server')
 const expect = require('chai').expect
 
 describe('HTTPServer specs', () => {

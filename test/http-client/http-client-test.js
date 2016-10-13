@@ -1,4 +1,4 @@
-const HTTPClient = require('../../src/http_client/http_client')
+const HTTPClient = require('../../src/http-client/http-client')
 const expect = require('chai').expect
 
 describe('HTTPClient specs', () => {

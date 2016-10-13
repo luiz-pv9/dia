@@ -1,5 +1,5 @@
-const HTTPServer = require('../../../src/http/http_server')
-const HTTPClient = require('../../../src/http_client/http_client')
+const HTTPServer = require('../../../src/http-server/http-server')
+const HTTPClient = require('../../../src/http-client/http-client')
 const expect = require('chai').expect
 
 describe('GET JSON', () => {

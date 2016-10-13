@@ -1,7 +1,7 @@
-const HTTPServer = require('../../../src/http/http_server')
-const HTTPClient = require('../../../src/http_client/http_client')
+const HTTPServer = require('../../../src/http-server/http-server')
+const HTTPClient = require('../../../src/http-client/http-client')
 const expect = require('chai').expect
-const parseBody = require('../../../src/http/pipeline/parse_body')
+const parseBody = require('../../../src/http-server/pipeline/parse-body')
 
 describe('POST form data', () => {
   let server, scope

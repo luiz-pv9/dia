@@ -1,4 +1,4 @@
-const Conn = require('../../src/http/conn')
+const Conn = require('../../src/http-server/conn')
 const expect = require('chai').expect
 
 describe('Conn specs', () => {

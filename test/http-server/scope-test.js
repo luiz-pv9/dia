@@ -1,5 +1,5 @@
-const Scope = require('../../src/http/scope')
-const Dispatcher = require('../../src/http/dispatcher')
+const Scope = require('../../src/http-server/scope')
+const Dispatcher = require('../../src/http-server/dispatcher')
 const expect = require('chai').expect
 
 describe('Scope specs', () => {
