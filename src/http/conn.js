@@ -1,5 +1,6 @@
 const JSONUtils = require('../json/utils')
 const url = require('url')
+const querystring = require('querystring')
 
 class Conn {
   constructor(req, res) {

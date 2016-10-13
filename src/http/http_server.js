@@ -36,7 +36,8 @@ class HTTPServer {
 
   requestListener(req, res) {
     let conn = new Conn(req, res)
-    this.dispatcher.dispatch(req.method, conn.requestPath, conn).then(response => {
+
+    return this.dispatcher.dispatch(req.method, conn.requestPath, conn).then(response => {
       if(_.isObject(response)) {
         conn.res.writeHead(200, {
           'Content-Type': 'application/json'

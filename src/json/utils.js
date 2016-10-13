@@ -1,3 +1,5 @@
+const _ = require('lodash')
+
 exports.fetch = function(json, key) {
   if(key == null) return json
   let path = key.split('.')
@@ -11,4 +13,8 @@ exports.shallowMerge = function(source, target) {
   for(let key in source) { merge[key] = source[key] }
   for(let key in target) { merge[key] = target[key] }
   return merge
+}
+
+exports.isObject = function(arg) {
+  return _.isObject(arg)
 }

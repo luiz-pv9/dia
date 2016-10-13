@@ -11,7 +11,11 @@ describe('POST form data', () => {
     scope = server.defaultScope
     scope.pipe(parseBody)
     scope.post('users', conn => {
-      return conn.params()
+      let file = conn.params('script')
+      return {
+        script_extension: file.extension,
+        script_name: file.name,
+      }
     })
     return server.listen()
   })
@@ -20,11 +24,18 @@ describe('POST form data', () => {
     return server.close()
   })
 
-  it('parses form data', () => {
-    let data = { name: 'Luiz', age: 20 }
+  it('parses form files', () => {
+    let data = { 
+      name: 'Luiz', 
+      script: HTTPClient.file(__dirname + '/post_form_file_test.js')
+    }
+
     return HTTPClient.post('http://localhost:8000/users', data).then(res => {
       expect(res.statusCode).to.eq(200)
-      expect(res.body).to.eql({name: 'Luiz', age: '20'})
+      expect(res.body).to.eql({
+        script_extension: '.js',
+        script_name: 'post_form_file_test',
+      })
     })
   })
 })

@@ -2,6 +2,7 @@ const request = require('request')
 const querystring = require('querystring')
 const url = require('url')
 const JSONUtils = require('../json/utils')
+const fs = require('fs')
 
 // `Request` in the function's name getRequestResponse refers to the library's 
 // name, not a generic request. If the library was named Foo, this function
@@ -16,7 +17,9 @@ function generateRequestResponse({ response, body }) {
 
     // If JSON.parse fails the promise returned from the request will reject,
     // so nothing to worry here.
-    body = JSON.parse(body)
+    if(!JSONUtils.isObject(body)) {
+      body = JSON.parse(body)
+    }
   }
 
   return {
@@ -28,6 +31,9 @@ function generateRequestResponse({ response, body }) {
 }
 
 class HTTPClient {
+  static file(filePath) {
+    return fs.createReadStream(filePath)
+  }
 
   static params(obj) {
     return querystring.stringify(obj)
@@ -37,7 +43,11 @@ class HTTPClient {
     return new Promise((resolve, reject) => {
       let requestOpts = { method, uri }
       if(opts.data && method !== 'get') {
-        requestOpts.formData = opts.data
+        if(opts.json) {
+          requestOpts.json = opts.data
+        } else {
+          requestOpts.formData = opts.data
+        }
       }
       request(requestOpts, function (error, response, body) {
         if (error) {
