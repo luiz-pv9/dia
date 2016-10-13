@@ -4,7 +4,6 @@ const Conn         = require('./conn')
 const httpShutdown = require('http-shutdown')
 const http         = require('http')
 const JSONUtils    = require('../json/utils')
-const _            = require('lodash')
 
 const defaultConfig = {
   gracefulShutdown: true,
@@ -38,7 +37,7 @@ class HTTPServer {
     let conn = new Conn(req, res)
 
     return this.dispatcher.dispatch(req.method, conn.requestPath, conn).then(response => {
-      if(_.isObject(response)) {
+      if(JSONUtils.isObject(response)) {
         conn.res.writeHead(200, {
           'Content-Type': 'application/json'
         })
