@@ -12,7 +12,10 @@ class Conn {
 
   __storeRequestData(req) {
     if(req && req.url) {
-      let parsedUrl = url.parse(req.url, true) // flag indicating node to parse the query as an object
+      this.method = req.method
+
+      // TODO: extract this to own pipeline
+      let parsedUrl = url.parse(req.url, true)
       this.requestPath = parsedUrl.path
       this.addParams(parsedUrl.query)
     }

@@ -8,6 +8,7 @@ const JSONUtils    = require('../json/utils')
 const defaultConfig = {
   gracefulShutdown: true,
   port: 8000,
+  host: '0.0.0.0'
 }
 
 class HTTPServer {
@@ -26,7 +27,9 @@ class HTTPServer {
         httpShutdown(this.server)
       }
 
-      this.server.listen(this.config.port, () => {
+      // The listen function throws an error if it is unable to bind to the
+      // given port, which is properly caught by the promise.
+      return this.server.listen(this.config.port, () => {
         // TODO: add log
         resolve()
       })
@@ -36,7 +39,7 @@ class HTTPServer {
   requestListener(req, res) {
     let conn = new Conn(req, res)
 
-    return this.dispatcher.dispatch(req.method, conn.requestPath, conn).then(response => {
+    return this.dispatcher.dispatch(conn.method, conn.requestPath, conn).then(response => {
       if(JSONUtils.isObject(response)) {
         conn.res.writeHead(200, {
           'Content-Type': 'application/json'
