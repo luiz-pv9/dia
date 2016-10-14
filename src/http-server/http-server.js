@@ -46,6 +46,9 @@ class HTTPServer {
         })
         res.end(JSON.stringify(response))
       }
+    }).catch(err => {
+      conn.res.writeHead(500, {})
+      res.end(err.stack)
     })
   }
 
