@@ -10,7 +10,7 @@ describe('HTTP server error handling', () => {
 
     server.defaultScope.get('home', conn => {
       let name = "Mr. Potter"
-      return name.nonExistingFunction() // common "undefined" is not a function
+      return name.nonExistingFunction() // "undefined" is not a function
     })
 
     return server.listen()

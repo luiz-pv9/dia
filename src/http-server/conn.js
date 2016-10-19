@@ -25,7 +25,6 @@ class Conn {
     throw new Error("not implemented")
   }
 
-
   hasParam(key) {
     return this.params(key) !== undefined
   }
