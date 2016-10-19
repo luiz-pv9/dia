@@ -23,7 +23,7 @@ describe('GET JSON', () => {
   })
 
   it('reponds with JSON', () => {
-    return HTTPClient.get('http://localhost:8000/sum?' + HTTPClient.params({a: 6, b: 4})).then(res => {
+    return HTTPClient.get('http://localhost:8000/sum?a=6&b=4').then(res => {
       expect(res.body).to.eql({
         sum: 10
       })
