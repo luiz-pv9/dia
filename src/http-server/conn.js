@@ -21,6 +21,11 @@ class Conn {
     }
   }
 
+  accepts(format) {
+    throw new Error("not implemented")
+  }
+
+
   hasParam(key) {
     return this.params(key) !== undefined
   }
