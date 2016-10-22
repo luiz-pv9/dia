@@ -33,7 +33,29 @@ describe('Compiler specs', () => {
   })
 
   it('handles error', () => {
-    // let tpl = compiler.inline('<%= name.length %>')
-    // let str = tpl({name: null})
+    let tpl = compiler.inline(`
+      <div><%= name.length %></div>
+    `)
+    try {
+      let str = tpl({ name: null })
+    } catch(err) {
+      expect(err).to.be.ok
+      expect(err.templateLineNumber).to.eq(1)
+      expect(err.templateColumnNumber).to.eq(21)
+    }
+  })
+
+  it('handles error with correct multiple lines', () => {
+    let tpl = compiler.inline(`
+      <div>
+        <%= name.length %>
+      </div>
+    `)
+    try {
+      let str = tpl({ name: null })
+    } catch(err) {
+      expect(err.templateLineNumber).to.eq(2)
+      expect(err.templateColumnNumber).to.eq(18)
+    }
   })
 })

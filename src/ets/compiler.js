@@ -1,4 +1,5 @@
 const View = require('./view')
+const errorCatcher = require('./error-catcher')
 
 class Compiler {
   static replaceAssignWithLocals(templateString) {
@@ -17,7 +18,7 @@ class Compiler {
     templateString = Compiler.interpolateEchos(templateString)
     let functionBody = 'with(this) { return `'+templateString+'`; }'
     let render = new Function('locals', functionBody)
-    return render.bind(view)
+    return errorCatcher(render.bind(view))
   }
 }
 
